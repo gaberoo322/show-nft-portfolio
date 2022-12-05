@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <h1>Show those NiFTys</h1>
+      <h1 className="text-3xl font-bold underline">Show those NiFTys</h1>
       {nftData?.ownedNfts?.map((nft) => (
         <div>
           <div>{nft?.title}</div>
