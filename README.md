@@ -1,5 +1,8 @@
 # show-nft-portfolio
-TLDR: A FE coding challenge to create and app with functionality to display NFTs for a given ethereum wallet address.
+TLDR: A FE coding challenge to create an app with functionality to display NFTs for a given ethereum wallet address.
+
+### link to see the running application:
+[https://profound-kringle-eb33b2.netlify.app/](https://profound-kringle-eb33b2.netlify.app/)
 
 ## case study instructions
 - Write a single-page React app that allows you to connect a Metamask wallet and show the NFTs (ERC721 and ERC1155) held by the wallet in a grid. Each NFT should be represented by its picture, token address (with a link to the address on Etherscan), and token ID. The app should be written using React, Typescript, and ethers.js. The wallet handling should emulate that of common dapps. You can use any libraries you wish.
