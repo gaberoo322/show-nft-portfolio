@@ -2,22 +2,26 @@ import { useEffect, useState } from "react";
 
 import { getNFTs, NftData } from "./webservice";
 
-import "./App.css";
-
 function App() {
   const address = "greenfield.eth";
   const [nftData, setNftData] = useState<NftData>();
 
   useEffect(() => {
     const getNftData = async () => await getNFTs(address);
-    getNftData().then((response) => setNftData(response));
+    getNftData().then((response) => {
+      console.log("🚀 ~ file: App.tsx:15 ~ useEffect ~ response", response);
+      return setNftData(response);
+    });
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <h1>Show those NiFTys</h1>
       {nftData?.ownedNfts?.map((nft) => (
-        <div>{nft?.title}</div>
+        <div>
+          <div>{nft?.title}</div>
+          <img src={nft?.metadata?.image} alt={nft?.title} />
+        </div>
       ))}
     </div>
   );
