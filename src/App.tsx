@@ -15,14 +15,20 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Show those NiFTys</h1>
-      {nftData?.ownedNfts?.map((nft) => (
-        <div>
-          <div>{nft?.title}</div>
-          <img src={nft?.metadata?.image} alt={nft?.title} />
-        </div>
-      ))}
+    <div className="flex-auto flex-col items-center bg-slate-800">
+      <h1 className="text-3xl text-white underline">Show those NiFTys</h1>
+      <div className="grid gap-5 grid-cols-4 grid-rows-none">
+        {nftData?.ownedNfts?.map((nft) => (
+          <div>
+            <div className="text-slate-400">{nft?.title}</div>
+            <img
+              className={"w-15"}
+              src={`${nft?.media?.[0]?.gateway}`}
+              alt={nft?.title}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
