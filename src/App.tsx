@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { getNFTs, NftData } from "./webservice";
+import { getNFTs } from "./webservice";
+
+import { NftData } from "./globalTypes";
 
 function App() {
-  const provider = new ethers.providers.Web3Provider(window?.ethereum);
+  const metaMask = window?.ethereum;
+  const provider = new ethers.providers.Web3Provider(metaMask);
   const [signer, setSigner] = useState<ethers.providers.JsonRpcSigner>(
     provider.getSigner()
   );
@@ -20,9 +23,8 @@ function App() {
   };
 
   useEffect(() => {
-    if (window?.ethereum._state.accounts.length > 0) {
-      initialize();
-    }
+    //TODO: find a better way to check if user is signed in
+    initialize();
   }, []);
 
   const walletConnect = async () => {
@@ -45,8 +47,8 @@ function App() {
       </header>
       {nftData ? (
         <div className="grid gap-5 grid-cols-4 grid-rows-none pt-10">
-          {nftData?.ownedNfts?.map((nft) => (
-            <div>
+          {nftData?.ownedNfts?.map((nft, i) => (
+            <div key={i}>
               <div className="text-slate-400">{nft?.title}</div>
               <img
                 className={"w-15"}
